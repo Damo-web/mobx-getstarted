@@ -17,7 +17,7 @@ function eq(a: any, b: any, aStack?: any[], bStack?: any[]) {
     if (a == null || b == null) return false
     // `NaN`s are equivalent, but non-reflexive.
     if (a !== a) return b !== b
-    // Exhaust primitive checks
+    // Exhaust primitive checks,进入复杂类型判断
     var type = typeof a
     if (type !== "function" && type !== "object" && typeof b != "object") return false
     return deepEq(a, b, aStack, bStack)

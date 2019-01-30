@@ -8,7 +8,7 @@ import {
     invariant,
     namedActionDecorator
 } from "../internal"
-
+// action的工厂函数
 export interface IActionFactory {
     // nameless actions
     <A1, R, T extends (a1: A1) => R>(fn: T): T & IAction
@@ -95,7 +95,7 @@ export function runInAction(arg1, arg2?) {
 export function isAction(thing: any) {
     return typeof thing === "function" && thing.isMobxAction === true
 }
-
+// boundAction
 export function defineBoundAction(target: any, propertyName: string, fn: Function) {
     addHiddenProp(target, propertyName, createAction(propertyName, fn.bind(target)))
 }

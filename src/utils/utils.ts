@@ -58,6 +58,7 @@ export function deprecated(msg: string, thing?: string): boolean {
 
 /**
  * Makes sure that the provided function is invoked at most once.
+ * 最多执行一次
  */
 export function once(func: Lambda): Lambda {
     let invoked = false
@@ -69,7 +70,7 @@ export function once(func: Lambda): Lambda {
 }
 
 export const noop = () => {}
-
+// 唯一化
 export function unique<T>(list: T[]): T[] {
     const res: T[] = []
     list.forEach(item => {
@@ -87,13 +88,13 @@ export function isPlainObject(value) {
     const proto = Object.getPrototypeOf(value)
     return proto === Object.prototype || proto === null
 }
-
+// 使不可遍历
 export function makeNonEnumerable(object: any, propNames: PropertyKey[]) {
     for (let i = 0; i < propNames.length; i++) {
         addHiddenProp(object, propNames[i], object[propNames[i]])
     }
 }
-
+// 使不可遍历
 export function addHiddenProp(object: any, propName: PropertyKey, value: any) {
     Object.defineProperty(object, propName, {
         enumerable: false,
@@ -102,7 +103,7 @@ export function addHiddenProp(object: any, propName: PropertyKey, value: any) {
         value
     })
 }
-
+// 使不可遍历且不可写
 export function addHiddenFinalProp(object: any, propName: PropertyKey, value: any) {
     Object.defineProperty(object, propName, {
         enumerable: false,

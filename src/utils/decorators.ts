@@ -63,7 +63,7 @@ export function initializeInstance(target: DecoratorTarget) {
         }
     }
 }
-
+// 属性装饰器
 export function createPropDecorator(
     propertyInitiallyEnumerable: boolean,
     propertyCreator: PropertyCreator
